@@ -66,7 +66,7 @@
 }
 
 .stTextInput > div {
-    box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.3); /* Adiciona sombra */
+    box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .stTextInput > div > div {
@@ -91,7 +91,7 @@
     top: 0px;
     width: 100%;
     left: 0;
-    z-index: 1000000000000000000 !important; 
+    z-index: 1; 
     background-color: #FF6200;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -106,4 +106,6 @@ footer {
 
 .stApp {
     background-color: #FFFFFF;
+    scrollbar-width: thin;
+    scrollbar-color: #002776 #f1f1f1;
 }

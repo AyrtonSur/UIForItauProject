@@ -208,9 +208,9 @@ st.markdown(get_css(), unsafe_allow_html=True)
 
 # # Initialize/maintain a chat log and chat memory in Streamlit's session state
 # # Log is the actual line by line chat, while memory is limited by model's maximum token context length
-# if "MEMORY" not in st.session_state:
-#     st.session_state.MEMORY = [{'role': "system", 'content': INITIAL_PROMPT}]
-#     st.session_state.LOG = [INITIAL_PROMPT]
+if "MEMORY" not in st.session_state:
+    st.session_state.MEMORY = [{'role': "system", 'content': INITIAL_PROMPT}]
+    st.session_state.LOG = [INITIAL_PROMPT]
 
 
 # Render chat history so far
