@@ -1,4 +1,5 @@
 import os
+from transformers import AutoTokenizer
 
 # Debug switch
 DEBUG = False
@@ -20,7 +21,10 @@ PRE_SUMMARY_PROMPT = "The above is the conversation so far between you, the cat,
 PRE_SUMMARY_NOTE = "Before the most recent messages, here's a summary of the conversation so far:"
 POST_SUMMARY_NOTE = "The summary ends. And here are the most recent two messages from the conversation. You should generate the next response based on the conversation so far."
 
-NLP_MODEL_NAME = "bert-base-uncased"                   # If Azure OpenAI, make sure this aligns with engine (deployment)
+tokenizer = AutoTokenizer.from_pretrained("bert-base-uncased")
+tokenizer.save_pretrained("./local_model")
+
+NLP_MODEL_NAME = "./local_model"                   # If Azure OpenAI, make sure this aligns with engine (deployment)
 NLP_MODEL_ENGINE = os.getenv("OPENAI_ENGINE", None) # If Azure OpenAI, make sure this aligns with model (of deployment)
 NLP_MODEL_MAX_TOKENS = 4000
 NLP_MODEL_REPLY_MAX_TOKENS = 1000

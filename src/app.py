@@ -54,7 +54,7 @@ def get_favicon(file_path: str):
 
 @st.cache_data(show_spinner=False)
 def get_tokenizer():
-    return AutoTokenizer.from_pretrained(NLP_MODEL_NAME, low_cpu_mem_usage=True)
+    return AutoTokenizer.from_pretrained(NLP_MODEL_NAME, local_files_only=True)
 
 
 @st.cache_data(show_spinner=False)
