@@ -54,7 +54,7 @@ def get_favicon(file_path: str):
 
 @st.cache_data(show_spinner=False)
 def get_tokenizer():
-    return AutoTokenizer.from_pretrained(NLP_MODEL_NAME, local_files_only=True)
+    return AutoTokenizer.from_pretrained(NLP_MODEL_NAME, low_cpu_mem_usage=True)
 
 
 @st.cache_data(show_spinner=False)
@@ -128,10 +128,10 @@ async def main(human_prompt: str) -> dict:
                 st.session_state.MEMORY
             )
 
-            # if DEBUG:
-            #     with st.sidebar:
-            #         st.write("prompt_res")
-            #         st.json(prompt_res, expanded=False)
+            if DEBUG:
+                with st.sidebar:
+                    st.write("prompt_res")
+                    st.json(prompt_res, expanded=False)
 
             if prompt_res['status'] != 0:
                 res['status'] = prompt_res['status']
@@ -198,9 +198,9 @@ prompt_box = st.empty()
 #     </small></div>
 #     """, unsafe_allow_html=True)
 
-# if DEBUG:
-#     with st.sidebar:
-#         st.subheader("Debug area")
+if DEBUG:
+    with st.sidebar:
+        st.subheader("Debug area")
 
 # Load CSS code
 st.markdown(get_css(), unsafe_allow_html=True)
