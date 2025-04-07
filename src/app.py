@@ -170,6 +170,7 @@ favicon = get_favicon(os.path.join(ROOT_DIR, "src", "assets", "itau-ai.png"))
 st.set_page_config(
     page_title="FinAItaú",
     page_icon=favicon,
+    layout="wide"
 )
 
 # Initialize some useful class instances

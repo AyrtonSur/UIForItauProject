@@ -94,6 +94,8 @@
     z-index: 1; 
     background-color: #FF6200;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    min-height: 78px;
+    max-height: 78px;
 }
 
 header {
@@ -108,4 +110,18 @@ footer {
     background-color: #FFFFFF;
     scrollbar-width: thin;
     scrollbar-color: #002776 #f1f1f1;
+}
+
+.stMainBlockContainer {
+    overflow: auto;
+    position: relative;
+    top: 78px;
+    height: calc(100vh - 78px);
+    padding-top: 0;
+}
+
+.stVerticalBlock > div > div > .stVerticalBlock {
+    max-width: 800px;
+    left: 50%;
+    transform: translateX(-50%);
 }
