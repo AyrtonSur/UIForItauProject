@@ -54,9 +54,9 @@ def get_favicon(file_path: str):
     return Image.open(file_path)
 
 
-@st.cache_data(show_spinner=False)
-def get_tokenizer():
-    return AutoTokenizer.from_pretrained("models/distilbert-local", local_files_only=True)
+# @st.cache_data(show_spinner=False)
+# def get_tokenizer():
+#     return AutoTokenizer.from_pretrained("models/distilbert-local", local_files_only=True)
 
 
 @st.cache_data(show_spinner=False)
@@ -125,23 +125,23 @@ async def main(human_prompt: str) -> dict:
 
             # Step 1: Generate the AI-aided image prompt using ChatGPT API
             # (but we first need to generate the prompt for ChatGPT!)
-            prompt_res = await generate_prompt_from_memory_async(
-                TOKENIZER,
-                st.session_state.MEMORY
-            )
+            # prompt_res = await generate_prompt_from_memory_async(
+            #     TOKENIZER,
+            #     st.session_state.MEMORY
+            # )
 
-            if DEBUG:
-                with st.sidebar:
-                    st.write("prompt_res")
-                    st.json(prompt_res, expanded=False)
+            # if DEBUG:
+            #     with st.sidebar:
+            #         st.write("prompt_res")
+            #         st.json(prompt_res, expanded=False)
 
-            if prompt_res['status'] != 0:
-                res['status'] = prompt_res['status']
-                res['message'] = prompt_res['message']
-                return res
+            # if prompt_res['status'] != 0:
+            #     res['status'] = prompt_res['status']
+            #     res['message'] = prompt_res['message']
+            #     return res
             
             # Update the memory from prompt res
-            st.session_state.MEMORY = prompt_res['data']['messages']
+            # st.session_state.MEMORY = prompt_res['data']['messages']
 
             # Call the OpenAI ChatGPT API
             chatbot_response = await get_chatbot_reply_async(
@@ -176,8 +176,8 @@ st.set_page_config(
 )
 
 # Initialize some useful class instances
-with st.spinner("Initializing App..."):
-    TOKENIZER = get_tokenizer()  # First time after deployment takes a few seconds
+# with st.spinner("Initializing App..."):
+#     TOKENIZER = get_tokenizer()  # First time after deployment takes a few seconds
 
 
 ### MAIN STREAMLIT UI STARTS HERE ###
