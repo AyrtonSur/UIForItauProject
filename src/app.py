@@ -15,6 +15,8 @@ from app_config import NLP_MODEL_NAME
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
+MODEL_PATH = os.path.abspath(os.path.join(ROOT_DIR, "..", NLP_MODEL_NAME))
+
 
 # Check environment variables
 
@@ -54,7 +56,7 @@ def get_favicon(file_path: str):
 
 @st.cache_data(show_spinner=False)
 def get_tokenizer():
-    return AutoTokenizer.from_pretrained(os.path.join(ROOT_DIR, NLP_MODEL_NAME), low_cpu_mem_usage=True, local_files_only=True)
+    return AutoTokenizer.from_pretrained(MODEL_PATH, low_cpu_mem_usage=True, local_files_only=True)
 
 
 @st.cache_data(show_spinner=False)
