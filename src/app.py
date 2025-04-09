@@ -56,7 +56,7 @@ def get_favicon(file_path: str):
 
 @st.cache_data(show_spinner=False)
 def get_tokenizer():
-    return AutoTokenizer.from_pretrained(MODEL_PATH, low_cpu_mem_usage=True, local_files_only=True)
+    return AutoTokenizer.from_pretrained("distilbert-base-uncased", use_fast=True)
 
 
 @st.cache_data(show_spinner=False)
